@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tournament Bracket</title>
+    <link rel="stylesheet" href="/static/styles.css?v=1.0">
+    <script src="/static/script.js?v=1.0" defer></script>
+</head>
+<body>
+    <div class="container">
+        <div class="left-half">
+            {% for round_index, round in enumerate(rounds) %}
+                <h2>Round {{ round_index }}</h2>
+                <ul>
+                    {% for match in round %}
+                        <li>{{ match[0] }} vs {{ match[1] }}</li>
+                    {% endfor %}
+                </ul>
+            {% endfor %}
+        </div>
+        <div class="right-half">
+            <h2>Challenges</h2>
+            <p>{{ challenge_text }}</p>
+            <div class="scoreboard">
+                <h2>Scoreboard</h2>
+                <ul>
+                    {% for team, points in scoreboard.items() %}
+                        <li>{{ team }}: {{ points }} points</li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,5 @@
+broker_address=10.224.62.251
+port=1884
+keepalive=60
+username=CODEUSER
+password=CODEUSER
