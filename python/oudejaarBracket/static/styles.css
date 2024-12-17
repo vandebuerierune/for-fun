@@ -8,6 +8,8 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
+    position: relative;
+    z-index: 1; /* Ensure the content is above the overlay */
 }
 
 .round {
@@ -45,13 +47,32 @@ body {
 }
 
 .lowerhalf {
+    display: flex;
+    justify-content: space-between;
     width: 100%;
+    position: fixed; /* Fix the position */
+    bottom: 0; /* Align it to the bottom */
+    background-color: rgba(0, 0, 0, 0.626); /* Ensure it has a background color */
+    padding: 10px; /* Add some padding if needed */
+    z-index: 1; /* Ensure it stays above the background */
 }
 
 .challengebox {
-    width: 95%;
+    width: 95%; /* Adjust as needed to ensure the scoreboard fits */
     text-align: left;
     padding: 2%;
+}
+
+.scoreboard {
+    width: 15%;
+    margin-top: 20px;
+    font-weight: bold;
+    color: white;
+    text-align: left;
+}
+
+.scoreboard p {
+    margin: 0;
 }
 
 .challenge {
@@ -67,13 +88,46 @@ body {
 .container {
     display: flex;
 }
+
 .left-half {
     flex: 1;
 }
+
 .right-half {
     flex: 1;
     padding-left: 20px;
 }
-.scoreboard {
-    margin-top: 20px;
+
+.scoremargin {
+    margin-bottom: 16px;
+}
+
+.winner {
+    background-color: greenyellow;
+    color: black;
+}
+
+.loser {
+    background-color: red;
+    opacity: 50%;
+}
+
+body.background {
+    position: relative;
+    z-index: 0;
+}
+
+body.background::before {
+    content: "";
+    position: fixed; /* Change to fixed to cover the entire viewport */
+    top: 0;
+    left: 0;
+    width: 100vw; /* Use viewport width */
+    height: 100vh; /* Use viewport height */
+    background-image: url('/static/assets/bg3.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    opacity: 0.5;
+    z-index: -1; /* Ensure the overlay is behind the content */
 }
